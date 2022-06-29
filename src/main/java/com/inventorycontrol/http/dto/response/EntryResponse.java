@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,9 +18,9 @@ public class EntryResponse {
 
     private UUID codEntry;
 
-    private Date requestDate;
+    private LocalDateTime requestDate;
 
-    private Date entryDate;
+    private LocalDateTime entryDate;
 
     private BigDecimal total;
 

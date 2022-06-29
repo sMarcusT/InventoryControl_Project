@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serial;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -26,9 +27,9 @@ public class EntryModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID codEntry;
 
-    private Date requestDate;
+    private LocalDateTime requestDate;
 
-    private Date entryDate;
+    private LocalDateTime entryDate;
 
     private BigDecimal total;
 
