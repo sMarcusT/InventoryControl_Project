@@ -32,4 +32,6 @@ public class ProviderResponse {
     private String insc;
 
     private String tel;
+
+    private String nameCity;
 }

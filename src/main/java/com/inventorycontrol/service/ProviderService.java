@@ -1,9 +1,12 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.CityNotFoundException;
 import com.inventorycontrol.exception.ProviderNotFoundException;
 import com.inventorycontrol.model.ProviderModel;
+import com.inventorycontrol.repository.CityRepository;
 import com.inventorycontrol.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +17,8 @@ import java.util.UUID;
 public class ProviderService {
 
     private final ProviderRepository providerRepository;
+
+    private final CityRepository cityRepository;
 
     public List<ProviderModel> findAll(){
         return providerRepository.findAll();
@@ -35,8 +40,8 @@ public class ProviderService {
     }
 
     public UUID delete(UUID uuid){
-        var forneceforModel = providerRepository.findById(uuid).orElseThrow(() -> new ProviderNotFoundException("Fornecedor não encontrado."));
-        providerRepository.delete(forneceforModel);
+        var providerModel = providerRepository.findById(uuid).orElseThrow(() -> new ProviderNotFoundException("Fornecedor não encontrado."));
+        providerRepository.delete(providerModel);
         return uuid;
     }
 }

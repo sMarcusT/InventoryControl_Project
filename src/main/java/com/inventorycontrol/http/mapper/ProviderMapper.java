@@ -1,5 +1,6 @@
 package com.inventorycontrol.http.mapper;
 
+import com.inventorycontrol.model.CityModel;
 import com.inventorycontrol.model.ProviderModel;
 import com.inventorycontrol.http.dto.request.ProviderRequest;
 import com.inventorycontrol.http.dto.response.ProviderResponse;
@@ -25,6 +26,7 @@ public class ProviderMapper {
                 .cnpj(providerRequest.getCnpj())
                 .insc(providerRequest.getInsc())
                 .tel(providerRequest.getTel())
+                .cityModel(CityModel.builder().codCity(providerRequest.getCity_codCity()).build())
                 .build();
     }
 
@@ -40,6 +42,7 @@ public class ProviderMapper {
                 .contact(providerModel.getContact())
                 .insc(providerModel.getInsc())
                 .tel(providerModel.getTel())
+                .nameCity(providerModel.getCityModel().getCity())
                 .build();
     }
 

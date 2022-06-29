@@ -26,6 +26,7 @@ public class CityMapper {
                 .codCity(cityModel.getCodCity())
                 .city(cityModel.getCity())
                 .uf(cityModel.getUf())
+                .providerResponseList(ProviderMapper.toResponseList(cityModel.getProviderModelList()))
                 .build();
     }
 

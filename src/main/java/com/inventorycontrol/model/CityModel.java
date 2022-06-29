@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -27,4 +28,7 @@ public class CityModel {
     private String city;
 
     private String uf;
+
+    @OneToMany(mappedBy = "cityModel")
+    private List<ProviderModel> providerModelList;
 }

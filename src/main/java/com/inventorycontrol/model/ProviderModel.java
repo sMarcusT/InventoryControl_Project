@@ -41,4 +41,9 @@ public class ProviderModel {
     private String insc;
 
     private String tel;
+
+    @ManyToOne
+    @JoinColumn(name = "city_codCity")
+    private CityModel cityModel;
+
 }

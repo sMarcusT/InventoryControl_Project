@@ -1,8 +1,9 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.CityNotFoundException;
 import com.inventorycontrol.model.CityModel;
 import com.inventorycontrol.repository.CityRepository;
-import com.inventorycontrol.exception.CityNotFoundException;
+import com.inventorycontrol.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class CityService {
 
     private final CityRepository cityRepository;
+
 
     public List<CityModel> findAll(){
         return cityRepository.findAll();
@@ -35,8 +37,8 @@ public class CityService {
     }
 
     public UUID delete(UUID uuid){
-        var cidadeModel = cityRepository.findById(uuid).orElseThrow(() -> new CityNotFoundException("Cidade não encontrada"));
-        cityRepository.delete(cidadeModel);
+        var cityModel = cityRepository.findById(uuid).orElseThrow(() -> new CityNotFoundException("Cidade não encontrada"));
+        cityRepository.delete(cityModel);
         return uuid;
     }
 }
