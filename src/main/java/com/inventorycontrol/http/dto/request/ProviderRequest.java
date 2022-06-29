@@ -44,5 +44,5 @@ public class ProviderRequest {
     @Size(min = 14, max = 14)
     private String tel;
 
-    private UUID city_codCity;
+    private UUID codCity;
 }
