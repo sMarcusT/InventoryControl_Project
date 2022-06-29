@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.ExitMapper;
 import com.inventorycontrol.service.ExitService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/exit")
+@Validated
 public class ExitController {
 
     private final ExitService exitService;
@@ -29,7 +32,7 @@ public class ExitController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ExitResponse> save(@RequestBody ExitRequest exitRequest){
+    public ResponseEntity<ExitResponse> save(@RequestBody @Valid ExitRequest exitRequest){
         return ResponseEntity.ok().body(ExitMapper.toResponse(exitService.save(ExitMapper.toModel(exitRequest))));
     }
 

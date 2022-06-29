@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.ProductMapper;
 import com.inventorycontrol.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/product")
+@Validated
 public class ProductController {
 
     private final ProductService productService;
@@ -29,7 +32,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ProductResponse> save(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<ProductResponse> save(@RequestBody @Valid ProductRequest productRequest){
         return ResponseEntity.ok().body(ProductMapper.toResponse(productService.save(ProductMapper.toModel(productRequest))));
     }
 

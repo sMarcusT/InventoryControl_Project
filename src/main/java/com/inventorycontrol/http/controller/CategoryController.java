@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.CategoryMapper;
 import com.inventorycontrol.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/category")
+@Validated
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -29,7 +32,7 @@ public class CategoryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CategoryResponse> save(@RequestBody CategoryRequest categoryRequest) {
+    public ResponseEntity<CategoryResponse> save(@RequestBody @Valid CategoryRequest categoryRequest) {
         return ResponseEntity.ok().body(CategoryMapper.toResponse(categoryService.save(CategoryMapper.toModel(categoryRequest))));
     }
 

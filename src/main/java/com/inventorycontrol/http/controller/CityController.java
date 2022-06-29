@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.CityMapper;
 import com.inventorycontrol.service.CityService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/city")
+@Validated
 public class CityController {
 
     private final CityService cityService;
@@ -29,7 +32,7 @@ public class CityController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CityResponse> save(@RequestBody CityRequest cityRequest) {
+    public ResponseEntity<CityResponse> save(@RequestBody @Valid CityRequest cityRequest) {
         return ResponseEntity.ok().body(CityMapper.toResponse(cityService.save(CityMapper.toModel(cityRequest))));
     }
 

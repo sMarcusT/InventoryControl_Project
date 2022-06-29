@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.EntryMapper;
 import com.inventorycontrol.service.EntryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/entry")
+@Validated
 public class EntryController {
 
     private final EntryService entryService;
@@ -30,7 +33,7 @@ public class EntryController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<EntryResponse> save(@RequestBody EntryRequest entryRequest) {
+    public ResponseEntity<EntryResponse> save(@RequestBody @Valid EntryRequest entryRequest) {
         return ResponseEntity.ok().body(EntryMapper.toResponse(entryService.save(EntryMapper.toModel(entryRequest))));
     }
 

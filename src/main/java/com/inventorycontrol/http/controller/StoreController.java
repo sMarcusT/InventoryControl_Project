@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.StoreMapper;
 import com.inventorycontrol.service.StoreService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/store")
+@Validated
 public class StoreController {
 
     private final StoreService storeService;
@@ -29,7 +32,7 @@ public class StoreController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<StoreResponse> save(@RequestBody StoreRequest storeRequest){
+    public ResponseEntity<StoreResponse> save(@RequestBody @Valid StoreRequest storeRequest){
         return ResponseEntity.ok().body(StoreMapper.toResponse(storeService.save(StoreMapper.toModel(storeRequest))));
     }
 

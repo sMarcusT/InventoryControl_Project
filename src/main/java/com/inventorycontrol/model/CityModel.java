@@ -14,7 +14,7 @@ import java.util.UUID;
 @Builder
 @Data
 @Entity
-@Table(name = "cidade", schema = "inventory")
+@Table(name = "city", schema = "inventory")
 public class CityModel {
 
     @Serial

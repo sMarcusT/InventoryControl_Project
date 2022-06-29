@@ -6,14 +6,17 @@ import com.inventorycontrol.http.mapper.ShippingCompanyMapper;
 import com.inventorycontrol.service.ShippingCompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/shippingCompany")
+@Validated
 public class ShippingCompanyController {
 
     private final ShippingCompanyService shippingCompanyService;
@@ -29,7 +32,7 @@ public class ShippingCompanyController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ShippingCompanyResponse> save(@RequestBody ShippingCompanyRequest shippingCompanyRequest){
+    public ResponseEntity<ShippingCompanyResponse> save(@RequestBody @Valid ShippingCompanyRequest shippingCompanyRequest){
         return ResponseEntity.ok().body(ShippingCompanyMapper.toResponse(shippingCompanyService.save(ShippingCompanyMapper.toModel(shippingCompanyRequest))));
     }
 
