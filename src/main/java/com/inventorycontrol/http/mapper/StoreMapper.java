@@ -20,11 +20,9 @@ public class StoreMapper {
                 .address(storeRequest.getAddress())
                 .num(storeRequest.getNum())
                 .district(storeRequest.getDistrict())
-                .cep(storeRequest.getCep())
-                .cnpj(storeRequest.getCnpj())
-                .insc(storeRequest.getInsc())
-                .contact(storeRequest.getContact())
                 .tel(storeRequest.getTel())
+                .insc(storeRequest.getInsc())
+                .cnpj(storeRequest.getCnpj())
                 .build();
     }
 
@@ -35,11 +33,9 @@ public class StoreMapper {
                 .address(storeModel.getAddress())
                 .num(storeModel.getNum())
                 .district(storeModel.getDistrict())
-                .cep(storeModel.getCep())
-                .cnpj(storeModel.getCnpj())
-                .insc(storeModel.getInsc())
-                .contact(storeModel.getContact())
                 .tel(storeModel.getTel())
+                .insc(storeModel.getInsc())
+                .cnpj(storeModel.getCnpj())
                 .build();
     }
 

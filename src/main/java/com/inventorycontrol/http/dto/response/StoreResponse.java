@@ -23,13 +23,9 @@ public class StoreResponse {
 
     private String district;
 
-    private String cep;
-
-    private String cnpj;
+    private String tel;
 
     private String insc;
 
-    private String contact;
-
-    private String tel;
+    private String cnpj;
 }

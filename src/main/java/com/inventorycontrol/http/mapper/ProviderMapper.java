@@ -36,8 +36,8 @@ public class ProviderMapper {
                 .num(providerModel.getNum())
                 .district(providerModel.getDistrict())
                 .cep(providerModel.getCep())
-                .contact(providerModel.getContact())
                 .cnpj(providerModel.getCnpj())
+                .contact(providerModel.getContact())
                 .insc(providerModel.getInsc())
                 .tel(providerModel.getTel())
                 .build();

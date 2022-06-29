@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serial;
 import java.util.UUID;
 
@@ -32,13 +36,9 @@ public class StoreModel {
 
     private String district;
 
-    private String cep;
-
-    private String cnpj;
+    private String tel;
 
     private String insc;
 
-    private String contact;
-
-    private String tel;
+    private String cnpj;
 }
