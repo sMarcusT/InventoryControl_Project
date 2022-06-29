@@ -45,4 +45,9 @@ public class ProviderController {
     public ResponseEntity<UUID> delete(@PathVariable String providerId){
         return ResponseEntity.ok().body(providerService.delete(UUID.fromString(providerId)));
     }
+
+    @GetMapping("/findProvidersByCity/{cityId}")
+    public ResponseEntity<List<ProviderResponse>> findProviderByCities(@PathVariable String cityId){
+        return ResponseEntity.ok().body(ProviderMapper.toResponseList(providerService.findProviderByCities(UUID.fromString(cityId))));
+    }
 }

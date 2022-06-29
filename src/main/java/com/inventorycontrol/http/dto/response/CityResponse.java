@@ -19,6 +19,4 @@ public class CityResponse {
     private String city;
 
     private String uf;
-
-    private List<ProviderResponse> providerResponseList;
 }

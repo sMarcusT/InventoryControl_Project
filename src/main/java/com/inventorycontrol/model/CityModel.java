@@ -28,7 +28,4 @@ public class CityModel {
     private String city;
 
     private String uf;
-
-    @OneToMany(mappedBy = "cityModel")
-    private List<ProviderModel> providerModelList;
 }
