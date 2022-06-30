@@ -45,4 +45,9 @@ public class StoreController {
     public ResponseEntity<UUID> delete(@PathVariable String storeId) {
         return ResponseEntity.ok().body(storeService.delete(UUID.fromString(storeId)));
     }
+
+    @GetMapping("/findStoresByCity/{cityId}")
+    public ResponseEntity<List<StoreResponse>> findStoresByCity(@PathVariable String cityId) {
+        return ResponseEntity.ok().body(StoreMapper.storeResponseList(storeService.findStoresByCity(UUID.fromString(cityId))));
+    }
 }

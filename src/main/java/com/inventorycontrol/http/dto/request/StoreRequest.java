@@ -8,6 +8,7 @@ import org.springframework.format.annotation.NumberFormat;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -35,4 +36,6 @@ public class StoreRequest {
     @NotEmpty(message = "Informe o CNPJ.")
     @CNPJ
     private String cnpj;
+
+    private UUID codCity;
 }

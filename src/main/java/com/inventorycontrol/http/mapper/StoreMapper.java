@@ -2,6 +2,7 @@ package com.inventorycontrol.http.mapper;
 
 import com.inventorycontrol.http.dto.request.StoreRequest;
 import com.inventorycontrol.http.dto.response.StoreResponse;
+import com.inventorycontrol.model.CityModel;
 import com.inventorycontrol.model.StoreModel;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class StoreMapper {
                 .tel(storeRequest.getTel())
                 .insc(storeRequest.getInsc())
                 .cnpj(storeRequest.getCnpj())
+                .cityModel(CityModel.builder().codCity(storeRequest.getCodCity()).build())
                 .build();
     }
 

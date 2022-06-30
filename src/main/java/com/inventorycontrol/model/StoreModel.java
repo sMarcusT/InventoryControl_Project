@@ -41,4 +41,8 @@ public class StoreModel {
     private String insc;
 
     private String cnpj;
+
+    @ManyToOne
+    @JoinColumn(name = "city_codCity")
+    private CityModel cityModel;
 }

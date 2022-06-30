@@ -1,7 +1,9 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.CityNotFoundException;
 import com.inventorycontrol.exception.StoreNotFoundException;
 import com.inventorycontrol.model.StoreModel;
+import com.inventorycontrol.repository.CityRepository;
 import com.inventorycontrol.repository.StoreRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ import java.util.UUID;
 public class StoreService {
 
     private final StoreRepository storeRepository;
+
+    private final CityRepository cityRepository;
 
     public List<StoreModel> findAll() {
         return storeRepository.findAll();
@@ -41,5 +45,10 @@ public class StoreService {
         var storeModel = storeRepository.findById(uuid).orElseThrow(() -> new StoreNotFoundException("Loja não encontrada."));
         storeRepository.delete(storeModel);
         return uuid;
+    }
+
+    public List<StoreModel> findStoresByCity(UUID uuid) {
+        return storeRepository.findStoreModelByCityModel(cityRepository.findById(uuid)
+                .orElseThrow(() -> new CityNotFoundException("Cidade não encontrada.")));
     }
 }
