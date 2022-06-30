@@ -18,26 +18,26 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<ProductModel> findAll(){
+    public List<ProductModel> findAll() {
         return productRepository.findAll();
     }
 
-    public ProductModel findById(UUID uuid){
+    public ProductModel findById(UUID uuid) {
         return productRepository.findById(uuid).orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
     }
 
-    public ProductModel save(ProductModel productModel){
+    public ProductModel save(ProductModel productModel) {
         return productRepository.save(productModel);
     }
 
-    public ProductModel update(ProductModel productModel, UUID uuid){
+    public ProductModel update(ProductModel productModel, UUID uuid) {
         productRepository.findById(uuid).orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
         productModel.setCodProduct(uuid);
         productRepository.save(productModel);
         return productModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var produtoModel = productRepository.findById(uuid).orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
         productRepository.delete(produtoModel);
         return uuid;

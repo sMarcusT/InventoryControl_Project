@@ -22,27 +22,27 @@ public class StoreController {
     private final StoreService storeService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<StoreResponse>> findAll(){
+    public ResponseEntity<List<StoreResponse>> findAll() {
         return ResponseEntity.ok().body(StoreMapper.storeResponseList(storeService.findAll()));
     }
 
     @GetMapping("/{storeId}")
-    public ResponseEntity<StoreResponse> findById(@PathVariable String storeId){
+    public ResponseEntity<StoreResponse> findById(@PathVariable String storeId) {
         return ResponseEntity.ok().body(StoreMapper.toResponse(storeService.findById(UUID.fromString(storeId))));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<StoreResponse> save(@RequestBody @Valid StoreRequest storeRequest){
+    public ResponseEntity<StoreResponse> save(@RequestBody @Valid StoreRequest storeRequest) {
         return ResponseEntity.ok().body(StoreMapper.toResponse(storeService.save(StoreMapper.toModel(storeRequest))));
     }
 
     @PutMapping("/{storeId}")
-    public ResponseEntity<StoreResponse> update(@RequestBody StoreRequest storeRequest, @PathVariable String storeId){
+    public ResponseEntity<StoreResponse> update(@RequestBody StoreRequest storeRequest, @PathVariable String storeId) {
         return ResponseEntity.ok().body(StoreMapper.toResponse(storeService.update(StoreMapper.toModel(storeRequest), UUID.fromString(storeId))));
     }
 
     @DeleteMapping("/{storeId}")
-    public ResponseEntity<UUID> delete(@PathVariable String storeId){
+    public ResponseEntity<UUID> delete(@PathVariable String storeId) {
         return ResponseEntity.ok().body(storeService.delete(UUID.fromString(storeId)));
     }
 }

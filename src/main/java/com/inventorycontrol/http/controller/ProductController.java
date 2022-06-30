@@ -22,27 +22,27 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductResponse>> findAll(){
+    public ResponseEntity<List<ProductResponse>> findAll() {
         return ResponseEntity.ok().body(ProductMapper.produtoResponseList(productService.findAll()));
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<ProductResponse> findById(@PathVariable String productId){
+    public ResponseEntity<ProductResponse> findById(@PathVariable String productId) {
         return ResponseEntity.ok().body(ProductMapper.toResponse(productService.findById(UUID.fromString(productId))));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ProductResponse> save(@RequestBody @Valid ProductRequest productRequest){
+    public ResponseEntity<ProductResponse> save(@RequestBody @Valid ProductRequest productRequest) {
         return ResponseEntity.ok().body(ProductMapper.toResponse(productService.save(ProductMapper.toModel(productRequest))));
     }
 
     @PutMapping("/{productId}")
-    public ResponseEntity<ProductResponse> update(@RequestBody ProductRequest productRequest, @PathVariable String productId){
+    public ResponseEntity<ProductResponse> update(@RequestBody ProductRequest productRequest, @PathVariable String productId) {
         return ResponseEntity.ok().body(ProductMapper.toResponse(productService.update(ProductMapper.toModel(productRequest), UUID.fromString(productId))));
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<UUID> delete(@PathVariable String productId){
+    public ResponseEntity<UUID> delete(@PathVariable String productId) {
         return ResponseEntity.ok().body(productService.delete(UUID.fromString(productId)));
     }
 }

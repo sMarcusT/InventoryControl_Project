@@ -14,25 +14,16 @@ import static java.util.Objects.isNull;
 @Component
 public class EntryItemMapper {
 
-    public static EntryItemModel toModel(EntryItemRequest entryItemRequest){
-        return EntryItemModel.builder()
-                .batch(entryItemRequest.getBatch())
-                .qtde(entryItemRequest.getQtde())
-                .value(entryItemRequest.getValue())
-                .build();
+    public static EntryItemModel toModel(EntryItemRequest entryItemRequest) {
+        return EntryItemModel.builder().batch(entryItemRequest.getBatch()).qtde(entryItemRequest.getQtde()).value(entryItemRequest.getValue()).build();
     }
 
-    public static EntryItemResponse toResponse(EntryItemModel entryItemModel){
-        return EntryItemResponse.builder()
-                .codeEntryItem(entryItemModel.getCodeEntryItem())
-                .batch(entryItemModel.getBatch())
-                .qtde(entryItemModel.getQtde())
-                .value(entryItemModel.getValue())
-                .build();
+    public static EntryItemResponse toResponse(EntryItemModel entryItemModel) {
+        return EntryItemResponse.builder().codeEntryItem(entryItemModel.getCodeEntryItem()).batch(entryItemModel.getBatch()).qtde(entryItemModel.getQtde()).value(entryItemModel.getValue()).build();
     }
 
-    public static List<EntryItemResponse> toResponseList(List<EntryItemModel> entryItemModelList){
-        if(isNull(entryItemModelList) || entryItemModelList.isEmpty()){
+    public static List<EntryItemResponse> toResponseList(List<EntryItemModel> entryItemModelList) {
+        if (isNull(entryItemModelList) || entryItemModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return entryItemModelList.stream().map(EntryItemMapper::toResponse).collect(Collectors.toList());

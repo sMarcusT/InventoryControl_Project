@@ -14,7 +14,7 @@ import static java.util.Objects.isNull;
 @Component
 public class StoreMapper {
 
-    public static StoreModel toModel(StoreRequest storeRequest){
+    public static StoreModel toModel(StoreRequest storeRequest) {
         return StoreModel.builder()
                 .name(storeRequest.getName())
                 .address(storeRequest.getAddress())
@@ -26,7 +26,7 @@ public class StoreMapper {
                 .build();
     }
 
-    public static StoreResponse toResponse(StoreModel storeModel){
+    public static StoreResponse toResponse(StoreModel storeModel) {
         return StoreResponse.builder()
                 .codStore(storeModel.getCodStore())
                 .name(storeModel.getName())
@@ -39,8 +39,8 @@ public class StoreMapper {
                 .build();
     }
 
-    public static List<StoreResponse> storeResponseList(List<StoreModel> storeModelList){
-        if(isNull (storeModelList) || storeModelList.isEmpty()){
+    public static List<StoreResponse> storeResponseList(List<StoreModel> storeModelList) {
+        if (isNull(storeModelList) || storeModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return storeModelList.stream().map(StoreMapper::toResponse).collect(Collectors.toList());

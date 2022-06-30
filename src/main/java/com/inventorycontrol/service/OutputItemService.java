@@ -18,26 +18,26 @@ public class OutputItemService {
 
     private final OutputItemRepository outputItemRepository;
 
-    public List<OutputItemModel> findAll(){
+    public List<OutputItemModel> findAll() {
         return outputItemRepository.findAll();
     }
 
-    public OutputItemModel findById(UUID uuid){
+    public OutputItemModel findById(UUID uuid) {
         return outputItemRepository.findById(uuid).orElseThrow(() -> new OutputNotFoundException("Item de saída não encontrado!"));
     }
 
-    public OutputItemModel save(OutputItemModel outputItemModel){
+    public OutputItemModel save(OutputItemModel outputItemModel) {
         return outputItemRepository.save(outputItemModel);
     }
 
-    public OutputItemModel update(OutputItemModel outputItemModel, UUID uuid){
+    public OutputItemModel update(OutputItemModel outputItemModel, UUID uuid) {
         outputItemRepository.findById(uuid).orElseThrow(() -> new OutputNotFoundException("Item de saída não encontrado!"));
         outputItemModel.setCodOutputItem(uuid);
         outputItemRepository.save(outputItemModel);
         return outputItemModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var outputItemModel = outputItemRepository.findById(uuid).orElseThrow(() -> new OutputNotFoundException("Item de saída não encontrado!"));
         outputItemRepository.delete(outputItemModel);
         return uuid;

@@ -14,7 +14,7 @@ import static java.util.Objects.isNull;
 @Component
 public class EntryMapper {
 
-    public static EntryModel toModel(EntryRequest entryRequest){
+    public static EntryModel toModel(EntryRequest entryRequest) {
         return EntryModel.builder()
                 .requestDate(entryRequest.getRequestDate())
                 .entryDate(entryRequest.getEntryDate())
@@ -25,7 +25,7 @@ public class EntryMapper {
                 .build();
     }
 
-    public static EntryResponse toResponse(EntryModel entryModel){
+    public static EntryResponse toResponse(EntryModel entryModel) {
         return EntryResponse.builder()
                 .codEntry(entryModel.getCodEntry())
                 .requestDate(entryModel.getRequestDate())
@@ -37,8 +37,8 @@ public class EntryMapper {
                 .build();
     }
 
-    public static List<EntryResponse> entryResponseList(List<EntryModel> entryModelList){
-        if(isNull(entryModelList) || entryModelList.isEmpty()){
+    public static List<EntryResponse> entryResponseList(List<EntryModel> entryModelList) {
+        if (isNull(entryModelList) || entryModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return entryModelList.stream().map(EntryMapper::toResponse).collect(Collectors.toList());

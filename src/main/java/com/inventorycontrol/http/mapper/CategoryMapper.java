@@ -14,21 +14,21 @@ import static java.util.Objects.isNull;
 @Component
 public class CategoryMapper {
 
-    public static CategoryModel toModel(CategoryRequest categoryRequest){
+    public static CategoryModel toModel(CategoryRequest categoryRequest) {
         return CategoryModel.builder()
                 .category(categoryRequest.getCategory())
                 .build();
     }
 
-    public static CategoryResponse toResponse(CategoryModel categoryModel){
+    public static CategoryResponse toResponse(CategoryModel categoryModel) {
         return CategoryResponse.builder()
                 .codCategory(categoryModel.getCodCategory())
                 .category(categoryModel.getCategory())
                 .build();
     }
 
-    public static List<CategoryResponse> toResponseList(List<CategoryModel> categoryModelList){
-        if(isNull(categoryModelList) || categoryModelList.isEmpty()){
+    public static List<CategoryResponse> toResponseList(List<CategoryModel> categoryModelList) {
+        if (isNull(categoryModelList) || categoryModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return categoryModelList.stream().map(CategoryMapper::toResponse).collect(Collectors.toList());

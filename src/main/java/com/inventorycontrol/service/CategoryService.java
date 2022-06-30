@@ -15,7 +15,7 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public List<CategoryModel> findAll(){
+    public List<CategoryModel> findAll() {
         return categoryRepository.findAll();
     }
 
@@ -23,19 +23,19 @@ public class CategoryService {
         return categoryRepository.findById(uuid).orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
     }
 
-    public CategoryModel save(CategoryModel categoryModel){
+    public CategoryModel save(CategoryModel categoryModel) {
         return categoryRepository.save(categoryModel);
     }
 
-    public CategoryModel update(CategoryModel categoryModel, UUID uuid){
-        categoryRepository.findById(uuid).orElseThrow(() ->  new CategoryNotFoundException("Categoria não encontrada"));
+    public CategoryModel update(CategoryModel categoryModel, UUID uuid) {
+        categoryRepository.findById(uuid).orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
         categoryModel.setCodCategory(uuid);
         categoryRepository.save(categoryModel);
         return categoryModel;
     }
 
-    public UUID delete(UUID uuid){
-        var categoryModel = categoryRepository.findById(uuid).orElseThrow(() ->  new CategoryNotFoundException("Categoria não encontrada"));
+    public UUID delete(UUID uuid) {
+        var categoryModel = categoryRepository.findById(uuid).orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
         categoryRepository.delete(categoryModel);
         return uuid;
     }

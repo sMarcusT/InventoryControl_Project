@@ -18,26 +18,26 @@ public class ExitService {
 
     private final ExitRepository exitRepository;
 
-    public List<ExitModel> findAll(){
+    public List<ExitModel> findAll() {
         return exitRepository.findAll();
     }
 
-    public ExitModel findById(UUID uuid){
+    public ExitModel findById(UUID uuid) {
         return exitRepository.findById(uuid).orElseThrow(() -> new ExitNotFoundException("Resultado não encontrado!"));
     }
 
-    public ExitModel save(ExitModel exitModel){
+    public ExitModel save(ExitModel exitModel) {
         return exitRepository.save(exitModel);
     }
 
-    public ExitModel update(ExitModel exitModel, UUID uuid){
+    public ExitModel update(ExitModel exitModel, UUID uuid) {
         exitRepository.findById(uuid).orElseThrow(() -> new ExitNotFoundException("Resultado não encontrado!"));
         exitModel.setCodExit(uuid);
         exitRepository.save(exitModel);
         return exitModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var exitModel = exitRepository.findById(uuid).orElseThrow(() -> new ExitNotFoundException("Resultado não encontrado!"));
         exitRepository.delete(exitModel);
         return uuid;

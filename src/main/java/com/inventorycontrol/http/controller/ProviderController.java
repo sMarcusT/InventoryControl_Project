@@ -22,32 +22,32 @@ public class ProviderController {
     private final ProviderService providerService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProviderResponse>> findAll(){
+    public ResponseEntity<List<ProviderResponse>> findAll() {
         return ResponseEntity.ok().body(ProviderMapper.toResponseList(providerService.findAll()));
     }
 
     @GetMapping("/{providerId}")
-    public ResponseEntity<ProviderResponse> findById(@PathVariable String providerId){
+    public ResponseEntity<ProviderResponse> findById(@PathVariable String providerId) {
         return ResponseEntity.ok().body(ProviderMapper.toResponse(providerService.findById(UUID.fromString(providerId))));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ProviderResponse> save(@RequestBody @Valid ProviderRequest providerRequest){
+    public ResponseEntity<ProviderResponse> save(@RequestBody @Valid ProviderRequest providerRequest) {
         return ResponseEntity.ok().body(ProviderMapper.toResponse(providerService.save(ProviderMapper.toModel(providerRequest))));
     }
 
     @PutMapping("/{providerId}")
-    public ResponseEntity<ProviderResponse> update(@RequestBody ProviderRequest providerRequest, @PathVariable String providerId){
+    public ResponseEntity<ProviderResponse> update(@RequestBody ProviderRequest providerRequest, @PathVariable String providerId) {
         return ResponseEntity.ok().body(ProviderMapper.toResponse(providerService.update(ProviderMapper.toModel(providerRequest), UUID.fromString(providerId))));
     }
 
     @DeleteMapping("/{providerId}")
-    public ResponseEntity<UUID> delete(@PathVariable String providerId){
+    public ResponseEntity<UUID> delete(@PathVariable String providerId) {
         return ResponseEntity.ok().body(providerService.delete(UUID.fromString(providerId)));
     }
 
     @GetMapping("/findProvidersByCity/{cityId}")
-    public ResponseEntity<List<ProviderResponse>> findProviderByCities(@PathVariable String cityId){
+    public ResponseEntity<List<ProviderResponse>> findProviderByCities(@PathVariable String cityId) {
         return ResponseEntity.ok().body(ProviderMapper.toResponseList(providerService.findProviderByCities(UUID.fromString(cityId))));
     }
 }

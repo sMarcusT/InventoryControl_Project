@@ -14,7 +14,7 @@ import static java.util.Objects.isNull;
 @Component
 public class OutputItemMapper {
 
-    public static OutputItemModel toModel(OutputItemRequest outputItemRequest){
+    public static OutputItemModel toModel(OutputItemRequest outputItemRequest) {
         return OutputItemModel.builder()
                 .batch(outputItemRequest.getBatch())
                 .qtde(outputItemRequest.getQtde())
@@ -22,7 +22,7 @@ public class OutputItemMapper {
                 .build();
     }
 
-    public static OutputItemResponse toResponse(OutputItemModel outputItemModel){
+    public static OutputItemResponse toResponse(OutputItemModel outputItemModel) {
         return OutputItemResponse.builder()
                 .codOutputItem(outputItemModel.getCodOutputItem())
                 .batch(outputItemModel.getBatch())
@@ -31,8 +31,8 @@ public class OutputItemMapper {
                 .build();
     }
 
-    public static List<OutputItemResponse> outputItemResponseList(List<OutputItemModel> outputItemModelList){
-        if(isNull(outputItemModelList) || outputItemModelList.isEmpty()){
+    public static List<OutputItemResponse> outputItemResponseList(List<OutputItemModel> outputItemModelList) {
+        if (isNull(outputItemModelList) || outputItemModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return outputItemModelList.stream().map(OutputItemMapper::toResponse).collect(Collectors.toList());

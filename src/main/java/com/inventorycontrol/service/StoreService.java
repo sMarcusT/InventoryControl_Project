@@ -18,26 +18,26 @@ public class StoreService {
 
     private final StoreRepository storeRepository;
 
-    public List<StoreModel> findAll(){
+    public List<StoreModel> findAll() {
         return storeRepository.findAll();
     }
 
-    public StoreModel findById(UUID uuid){
+    public StoreModel findById(UUID uuid) {
         return storeRepository.findById(uuid).orElseThrow(() -> new StoreNotFoundException("Loja não encontrada."));
     }
 
-    public StoreModel save(StoreModel storeModel){
+    public StoreModel save(StoreModel storeModel) {
         return storeRepository.save(storeModel);
     }
 
-    public StoreModel update(StoreModel storeModel, UUID uuid){
+    public StoreModel update(StoreModel storeModel, UUID uuid) {
         storeRepository.findById(uuid).orElseThrow(() -> new StoreNotFoundException("Loja não encontrada."));
         storeModel.setCodStore(uuid);
         storeRepository.save(storeModel);
         return storeModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var storeModel = storeRepository.findById(uuid).orElseThrow(() -> new StoreNotFoundException("Loja não encontrada."));
         storeRepository.delete(storeModel);
         return uuid;

@@ -15,26 +15,26 @@ public class EntryItemService {
 
     private final EntryItemRepository entryItemRepository;
 
-    public List<EntryItemModel> findAll(){
+    public List<EntryItemModel> findAll() {
         return entryItemRepository.findAll();
     }
 
-    public EntryItemModel findById(UUID uuid){
+    public EntryItemModel findById(UUID uuid) {
         return entryItemRepository.findById(uuid).orElseThrow(() -> new EntryItemNotFoundException("Entrada de item não encontrada"));
     }
 
-    public EntryItemModel save(EntryItemModel entryItemModel){
+    public EntryItemModel save(EntryItemModel entryItemModel) {
         return entryItemRepository.save(entryItemModel);
     }
 
-    public EntryItemModel update(EntryItemModel entryItemModel, UUID uuid){
+    public EntryItemModel update(EntryItemModel entryItemModel, UUID uuid) {
         entryItemRepository.findById(uuid).orElseThrow(() -> new EntryItemNotFoundException("Entrada de item não encontrada"));
         entryItemModel.setCodeEntryItem(uuid);
         entryItemRepository.save(entryItemModel);
         return entryItemModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var entryItemModel = entryItemRepository.findById(uuid).orElseThrow(() -> new EntryItemNotFoundException("Entrada de item não encontrada"));
         entryItemRepository.delete(entryItemModel);
         return uuid;

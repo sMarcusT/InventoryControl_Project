@@ -22,27 +22,27 @@ public class OutputItemController {
     private final OutputItemService outputItemService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<OutputItemResponse>> findAll(){
+    public ResponseEntity<List<OutputItemResponse>> findAll() {
         return ResponseEntity.ok().body(OutputItemMapper.outputItemResponseList(outputItemService.findAll()));
     }
 
     @GetMapping("/{outputItemId}")
-    public ResponseEntity<OutputItemResponse> findById(@PathVariable String outputItemId){
+    public ResponseEntity<OutputItemResponse> findById(@PathVariable String outputItemId) {
         return ResponseEntity.ok().body(OutputItemMapper.toResponse(outputItemService.findById(UUID.fromString(outputItemId))));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<OutputItemResponse> save(@RequestBody @Valid OutputItemRequest outputItemRequest){
+    public ResponseEntity<OutputItemResponse> save(@RequestBody @Valid OutputItemRequest outputItemRequest) {
         return ResponseEntity.ok().body(OutputItemMapper.toResponse(outputItemService.save(OutputItemMapper.toModel(outputItemRequest))));
     }
 
     @PutMapping("/{outputItemId}")
-    public ResponseEntity<OutputItemResponse> update(@RequestBody OutputItemRequest outputItemRequest, @PathVariable String outputItemId){
+    public ResponseEntity<OutputItemResponse> update(@RequestBody OutputItemRequest outputItemRequest, @PathVariable String outputItemId) {
         return ResponseEntity.ok().body(OutputItemMapper.toResponse(outputItemService.update(OutputItemMapper.toModel(outputItemRequest), UUID.fromString(outputItemId))));
     }
 
     @DeleteMapping("/{outputItemId}")
-    public ResponseEntity<UUID> delete(@PathVariable String outputItemId){
+    public ResponseEntity<UUID> delete(@PathVariable String outputItemId) {
         return ResponseEntity.ok().body(outputItemService.delete(UUID.fromString(outputItemId)));
     }
 }

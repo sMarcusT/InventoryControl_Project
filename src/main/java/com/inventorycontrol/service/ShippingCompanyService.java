@@ -18,26 +18,26 @@ public class ShippingCompanyService {
 
     private final ShippingCompanyRepository shippingCompanyRepository;
 
-    public List<ShippingCompanyModel> findAll(){
+    public List<ShippingCompanyModel> findAll() {
         return shippingCompanyRepository.findAll();
     }
 
-    public ShippingCompanyModel findById(UUID uuid){
+    public ShippingCompanyModel findById(UUID uuid) {
         return shippingCompanyRepository.findById(uuid).orElseThrow(() -> new ShippingCompanyNotFoundException("Transportadora não encontrada."));
     }
 
-    public ShippingCompanyModel save(ShippingCompanyModel shippingCompanyModel){
+    public ShippingCompanyModel save(ShippingCompanyModel shippingCompanyModel) {
         return shippingCompanyRepository.save(shippingCompanyModel);
     }
 
-    public ShippingCompanyModel update(ShippingCompanyModel shippingCompanyModel, UUID uuid){
+    public ShippingCompanyModel update(ShippingCompanyModel shippingCompanyModel, UUID uuid) {
         shippingCompanyRepository.findById(uuid).orElseThrow(() -> new ShippingCompanyNotFoundException("Transportadora não encontrada."));
         shippingCompanyModel.setCodShippingCompany(uuid);
         shippingCompanyRepository.save(shippingCompanyModel);
         return shippingCompanyModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var shippingCompanyModel = shippingCompanyRepository.findById(uuid).orElseThrow(() -> new ShippingCompanyNotFoundException("Transportadora não encontrada."));
         shippingCompanyRepository.delete(shippingCompanyModel);
         return uuid;

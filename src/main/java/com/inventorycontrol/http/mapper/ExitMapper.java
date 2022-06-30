@@ -14,7 +14,7 @@ import static java.util.Objects.isNull;
 @Component
 public class ExitMapper {
 
-    public static ExitModel toModel(ExitRequest exitRequest){
+    public static ExitModel toModel(ExitRequest exitRequest) {
         return ExitModel.builder()
                 .total(exitRequest.getTotal())
                 .shipping(exitRequest.getShipping())
@@ -22,7 +22,7 @@ public class ExitMapper {
                 .build();
     }
 
-    public static ExitResponse toResponse(ExitModel exitModel){
+    public static ExitResponse toResponse(ExitModel exitModel) {
         return ExitResponse.builder()
                 .codExit(exitModel.getCodExit())
                 .total(exitModel.getTotal())
@@ -31,8 +31,8 @@ public class ExitMapper {
                 .build();
     }
 
-    public static List<ExitResponse> toResponseList(List<ExitModel> exitModelList){
-        if(isNull(exitModelList) || exitModelList.isEmpty()){
+    public static List<ExitResponse> toResponseList(List<ExitModel> exitModelList) {
+        if (isNull(exitModelList) || exitModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return exitModelList.stream().map(ExitMapper::toResponse).collect(Collectors.toList());

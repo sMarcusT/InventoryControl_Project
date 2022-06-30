@@ -14,7 +14,7 @@ import static java.util.Objects.isNull;
 @Component
 public class ShippingCompanyMapper {
 
-    public static ShippingCompanyModel toModel(ShippingCompanyRequest shippingCompanyRequest){
+    public static ShippingCompanyModel toModel(ShippingCompanyRequest shippingCompanyRequest) {
         return ShippingCompanyModel.builder()
                 .shippingCompany(shippingCompanyRequest.getShippingCompany())
                 .address(shippingCompanyRequest.getAddress())
@@ -28,7 +28,7 @@ public class ShippingCompanyMapper {
                 .build();
     }
 
-    public static ShippingCompanyResponse toResponse(ShippingCompanyModel shippingCompanyModel){
+    public static ShippingCompanyResponse toResponse(ShippingCompanyModel shippingCompanyModel) {
         return ShippingCompanyResponse.builder()
                 .codShippingCompany(shippingCompanyModel.getCodShippingCompany())
                 .shippingCompany(shippingCompanyModel.getShippingCompany())
@@ -43,8 +43,8 @@ public class ShippingCompanyMapper {
                 .build();
     }
 
-    public static List<ShippingCompanyResponse> shippingCompanyResponseList(List<ShippingCompanyModel> shippingCompanyModelList){
-        if (isNull(shippingCompanyModelList) || shippingCompanyModelList.isEmpty()){
+    public static List<ShippingCompanyResponse> shippingCompanyResponseList(List<ShippingCompanyModel> shippingCompanyModelList) {
+        if (isNull(shippingCompanyModelList) || shippingCompanyModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return shippingCompanyModelList.stream().map(ShippingCompanyMapper::toResponse).collect(Collectors.toList());

@@ -15,7 +15,7 @@ import static java.util.Objects.isNull;
 @Component
 public class ProviderMapper {
 
-    public static ProviderModel toModel(ProviderRequest providerRequest){
+    public static ProviderModel toModel(ProviderRequest providerRequest) {
         return ProviderModel.builder()
                 .provider(providerRequest.getProvider())
                 .address(providerRequest.getAddress())
@@ -30,7 +30,7 @@ public class ProviderMapper {
                 .build();
     }
 
-    public static ProviderResponse toResponse(ProviderModel providerModel){
+    public static ProviderResponse toResponse(ProviderModel providerModel) {
         return ProviderResponse.builder()
                 .codProvider(providerModel.getCodProvider())
                 .provider(providerModel.getProvider())
@@ -45,8 +45,8 @@ public class ProviderMapper {
                 .build();
     }
 
-    public static List<ProviderResponse> toResponseList(List<ProviderModel> providerModelList){
-        if(isNull(providerModelList) || providerModelList.isEmpty()){
+    public static List<ProviderResponse> toResponseList(List<ProviderModel> providerModelList) {
+        if (isNull(providerModelList) || providerModelList.isEmpty()) {
             return new ArrayList<>();
         } else {
             return providerModelList.stream().map(ProviderMapper::toResponse).collect(Collectors.toList());

@@ -22,27 +22,27 @@ public class ExitController {
     private final ExitService exitService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ExitResponse>> findAll(){
+    public ResponseEntity<List<ExitResponse>> findAll() {
         return ResponseEntity.ok().body(ExitMapper.toResponseList(exitService.findAll()));
     }
 
     @GetMapping("/{exitId}")
-    public ResponseEntity<ExitResponse> findById(@PathVariable String exitId){
+    public ResponseEntity<ExitResponse> findById(@PathVariable String exitId) {
         return ResponseEntity.ok().body(ExitMapper.toResponse(exitService.findById(UUID.fromString(exitId))));
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ExitResponse> save(@RequestBody @Valid ExitRequest exitRequest){
+    public ResponseEntity<ExitResponse> save(@RequestBody @Valid ExitRequest exitRequest) {
         return ResponseEntity.ok().body(ExitMapper.toResponse(exitService.save(ExitMapper.toModel(exitRequest))));
     }
 
     @PutMapping("/{exitId}")
-    public ResponseEntity<ExitResponse> update(@RequestBody ExitRequest exitRequest, @PathVariable String exitId){
+    public ResponseEntity<ExitResponse> update(@RequestBody ExitRequest exitRequest, @PathVariable String exitId) {
         return ResponseEntity.ok().body(ExitMapper.toResponse(exitService.update(ExitMapper.toModel(exitRequest), UUID.fromString(exitId))));
     }
 
     @DeleteMapping("{exitId}")
-    public ResponseEntity<UUID> delete(@PathVariable String exitId){
+    public ResponseEntity<UUID> delete(@PathVariable String exitId) {
         return ResponseEntity.ok().body(exitService.delete(UUID.fromString(exitId)));
     }
 }
