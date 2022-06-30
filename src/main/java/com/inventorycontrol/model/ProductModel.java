@@ -32,4 +32,11 @@ public class ProductModel {
 
     private Integer qtdMin;
 
+    @ManyToOne
+    @JoinColumn(name = "provider_codProvider")
+    private ProviderModel providerModel;
+
+    @ManyToOne
+    @JoinColumn(name = "category_codCategory")
+    private CategoryModel categoryModel;
 }

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -20,4 +21,8 @@ public class ProductRequest {
 
     @NotNull(message = "Informe o quantidade minima.")
     private Integer qtdMin;
+
+    private UUID codProvider;
+
+    private UUID codCategory;
 }
