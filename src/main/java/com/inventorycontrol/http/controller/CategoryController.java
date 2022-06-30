@@ -45,4 +45,9 @@ public class CategoryController {
     public ResponseEntity<UUID> delete(@PathVariable String categoryId) {
         return ResponseEntity.ok().body(categoryService.delete(UUID.fromString(categoryId)));
     }
+
+    @GetMapping("/findCategoriesByProvider/{providerId}")
+    public ResponseEntity<List<CategoryResponse>> findCategoriesByProvider(@PathVariable String providerId){
+        return ResponseEntity.ok().body(CategoryMapper.toResponseList(categoryService.findCategoriesByProvider(UUID.fromString(providerId))));
+    }
 }

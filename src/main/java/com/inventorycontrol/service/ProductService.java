@@ -1,14 +1,13 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.CategoryNotFoundException;
 import com.inventorycontrol.exception.ProductNotFoundException;
 import com.inventorycontrol.model.ProductModel;
+import com.inventorycontrol.repository.CategoryRepository;
 import com.inventorycontrol.repository.ProductRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.NoResultException;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +16,8 @@ import java.util.UUID;
 public class ProductService {
 
     private final ProductRepository productRepository;
+
+    private final CategoryRepository categoryRepository;
 
     public List<ProductModel> findAll() {
         return productRepository.findAll();
@@ -38,8 +39,13 @@ public class ProductService {
     }
 
     public UUID delete(UUID uuid) {
-        var produtoModel = productRepository.findById(uuid).orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
-        productRepository.delete(produtoModel);
+        var productModel = productRepository.findById(uuid).orElseThrow(() -> new ProductNotFoundException("Produto não encontrado."));
+        productRepository.delete(productModel);
         return uuid;
+    }
+
+    public List<ProductModel> findProductsByCategory(UUID uuid){
+        return productRepository.findProductModelByCategoryModel(categoryRepository.findById(uuid)
+                .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada.")));
     }
 }

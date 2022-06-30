@@ -22,7 +22,5 @@ public class ProductRequest {
     @NotNull(message = "Informe o quantidade minima.")
     private Integer qtdMin;
 
-    private UUID codProvider;
-
     private UUID codCategory;
 }

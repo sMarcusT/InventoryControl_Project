@@ -3,6 +3,7 @@ package com.inventorycontrol.http.mapper;
 import com.inventorycontrol.http.dto.request.CategoryRequest;
 import com.inventorycontrol.http.dto.response.CategoryResponse;
 import com.inventorycontrol.model.CategoryModel;
+import com.inventorycontrol.model.ProviderModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class CategoryMapper {
     public static CategoryModel toModel(CategoryRequest categoryRequest) {
         return CategoryModel.builder()
                 .category(categoryRequest.getCategory())
+                .providerModel(ProviderModel.builder().codProvider(categoryRequest.getCodProvider()).build())
                 .build();
     }
 

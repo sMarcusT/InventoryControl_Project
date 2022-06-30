@@ -22,7 +22,6 @@ public class ProductMapper {
                 .weight(productRequest.getWeight())
                 .controlled(productRequest.isControlled())
                 .qtdMin(productRequest.getQtdMin())
-                .providerModel(ProviderModel.builder().codProvider(productRequest.getCodProvider()).build())
                 .categoryModel(CategoryModel.builder().codCategory(productRequest.getCodCategory()).build())
                 .build();
     }

@@ -25,4 +25,8 @@ public class CategoryModel {
     private UUID codCategory;
 
     private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_codProvider")
+    private ProviderModel providerModel;
 }
