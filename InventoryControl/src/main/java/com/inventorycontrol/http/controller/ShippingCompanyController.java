@@ -37,7 +37,7 @@ public class ShippingCompanyController {
     }
 
     @PutMapping("/{shippingCompanyId}")
-    public ResponseEntity<ShippingCompanyResponse> update(@RequestBody ShippingCompanyRequest shippingCompanyRequest, @PathVariable String shippingCompanyId) {
+    public ResponseEntity<ShippingCompanyResponse> update(@RequestBody @Valid ShippingCompanyRequest shippingCompanyRequest, @PathVariable String shippingCompanyId) {
         return ResponseEntity.ok().body(ShippingCompanyMapper.toResponse(shippingCompanyService.update(ShippingCompanyMapper.toModel(shippingCompanyRequest), UUID.fromString(shippingCompanyId))));
     }
 

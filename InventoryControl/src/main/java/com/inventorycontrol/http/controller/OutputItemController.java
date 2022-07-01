@@ -37,7 +37,7 @@ public class OutputItemController {
     }
 
     @PutMapping("/{outputItemId}")
-    public ResponseEntity<OutputItemResponse> update(@RequestBody OutputItemRequest outputItemRequest, @PathVariable String outputItemId) {
+    public ResponseEntity<OutputItemResponse> update(@RequestBody @Valid OutputItemRequest outputItemRequest, @PathVariable String outputItemId) {
         return ResponseEntity.ok().body(OutputItemMapper.toResponse(outputItemService.update(OutputItemMapper.toModel(outputItemRequest), UUID.fromString(outputItemId))));
     }
 

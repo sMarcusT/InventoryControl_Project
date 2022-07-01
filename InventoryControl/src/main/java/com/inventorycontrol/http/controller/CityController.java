@@ -37,7 +37,7 @@ public class CityController {
     }
 
     @PutMapping("/{cityId}")
-    public ResponseEntity<CityResponse> update(@RequestBody CityRequest cityRequest, @PathVariable String cityId) {
+    public ResponseEntity<CityResponse> update(@RequestBody @Valid CityRequest cityRequest, @PathVariable String cityId) {
         return ResponseEntity.ok().body(CityMapper.toResponse(cityService.update(CityMapper.toModel(cityRequest), UUID.fromString(cityId))));
     }
 

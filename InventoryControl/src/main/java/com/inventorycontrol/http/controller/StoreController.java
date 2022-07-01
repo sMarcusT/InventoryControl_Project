@@ -37,7 +37,7 @@ public class StoreController {
     }
 
     @PutMapping("/{storeId}")
-    public ResponseEntity<StoreResponse> update(@RequestBody StoreRequest storeRequest, @PathVariable String storeId) {
+    public ResponseEntity<StoreResponse> update(@RequestBody @Valid StoreRequest storeRequest, @PathVariable String storeId) {
         return ResponseEntity.ok().body(StoreMapper.toResponse(storeService.update(StoreMapper.toModel(storeRequest), UUID.fromString(storeId))));
     }
 

@@ -37,12 +37,17 @@ public class ExitController {
     }
 
     @PutMapping("/{exitId}")
-    public ResponseEntity<ExitResponse> update(@RequestBody ExitRequest exitRequest, @PathVariable String exitId) {
+    public ResponseEntity<ExitResponse> update(@RequestBody @Valid ExitRequest exitRequest, @PathVariable String exitId) {
         return ResponseEntity.ok().body(ExitMapper.toResponse(exitService.update(ExitMapper.toModel(exitRequest), UUID.fromString(exitId))));
     }
 
     @DeleteMapping("{exitId}")
     public ResponseEntity<UUID> delete(@PathVariable String exitId) {
         return ResponseEntity.ok().body(exitService.delete(UUID.fromString(exitId)));
+    }
+
+    @GetMapping("/findExitsByShippingCompany/{shippingCompanyId}")
+    public ResponseEntity<List<ExitResponse>> findExitsByShippingCompany(@PathVariable String shippingCompanyId){
+        return ResponseEntity.ok().body(ExitMapper.toResponseList(exitService.findExitsByShippingCompany(UUID.fromString(shippingCompanyId))));
     }
 }

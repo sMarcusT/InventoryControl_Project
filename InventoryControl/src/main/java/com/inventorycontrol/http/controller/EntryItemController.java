@@ -37,7 +37,7 @@ public class EntryItemController {
     }
 
     @PutMapping("/{entryItemId}")
-    public ResponseEntity<EntryItemResponse> update(@RequestBody EntryItemRequest entryItemRequest, @PathVariable String entryItemId) {
+    public ResponseEntity<EntryItemResponse> update(@RequestBody @Valid EntryItemRequest entryItemRequest, @PathVariable String entryItemId) {
         return ResponseEntity.ok().body(EntryItemMapper.toResponse(entryItemService.update(EntryItemMapper.toModel(entryItemRequest), UUID.fromString(entryItemId))));
     }
 
