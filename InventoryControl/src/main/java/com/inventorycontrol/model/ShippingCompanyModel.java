@@ -48,7 +48,7 @@ public class ShippingCompanyModel implements Serializable {
     @JoinTable(
             name = "shipping_company_cities",
             schema = "inventory",
-            joinColumns = @JoinColumn(name = "cod_codShippingCompany_fk"),
-            inverseJoinColumns = @JoinColumn(name = "cod_codCity-fk"))
+            joinColumns = @JoinColumn(name = "codShippingCompany_fk"),
+            inverseJoinColumns = @JoinColumn(name = "codCity_fk"))
     private List<CityModel> cityModelList;
 }

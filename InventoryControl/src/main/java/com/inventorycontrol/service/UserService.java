@@ -4,7 +4,7 @@ import com.inventorycontrol.exception.UserNotFoundException;
 import com.inventorycontrol.model.UserModel;
 import com.inventorycontrol.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +16,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    private final PasswordEncoder passwordEncoder;
 
     public List<UserModel> findAll() {
         return userRepository.findAll();
@@ -29,14 +27,14 @@ public class UserService {
     }
 
     public UserModel save(UserModel userModel) {
-        userModel.setPassword(passwordEncoder().encode(userModel.getPassword()));
+        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
         return userRepository.save(userModel);
     }
 
     public UserModel update(UserModel userModel, UUID uuid) {
         userRepository.findById(uuid).orElseThrow(() -> new UserNotFoundException("Usuário não encontrado."));
         userModel.setCodUser(uuid);
-        userModel.setPassword(passwordEncoder().encode(userModel.getPassword()));
+        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
         userRepository.save(userModel);
         return userModel;
     }
