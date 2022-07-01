@@ -26,4 +26,8 @@ public class ExitItemModel {
     private Integer qtde;
 
     private BigDecimal value;
+
+    @ManyToOne
+    @JoinColumn(name = "exit_codExit")
+    private ExitModel exitModel;
 }

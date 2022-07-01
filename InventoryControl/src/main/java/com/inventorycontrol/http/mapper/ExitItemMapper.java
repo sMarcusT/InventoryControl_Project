@@ -3,6 +3,7 @@ package com.inventorycontrol.http.mapper;
 import com.inventorycontrol.http.dto.request.ExitItemRequest;
 import com.inventorycontrol.http.dto.response.ExitItemResponse;
 import com.inventorycontrol.model.ExitItemModel;
+import com.inventorycontrol.model.ExitModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ExitItemMapper {
                 .batch(exitItemRequest.getBatch())
                 .qtde(exitItemRequest.getQtde())
                 .value(exitItemRequest.getValue())
+                .exitModel(ExitModel.builder().codExit(exitItemRequest.getCodExit()).build())
                 .build();
     }
 

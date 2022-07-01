@@ -20,4 +20,6 @@ public class ExitItemRequest {
 
     @NotNull(message = "Informe o valor.")
     private BigDecimal value;
+
+    private UUID codExit;
 }
