@@ -3,6 +3,7 @@ package com.inventorycontrol.http.mapper;
 import com.inventorycontrol.http.dto.request.ExitRequest;
 import com.inventorycontrol.http.dto.response.ExitResponse;
 import com.inventorycontrol.model.ExitModel;
+import com.inventorycontrol.model.ShippingCompanyModel;
 import com.inventorycontrol.model.StoreModel;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ public class ExitMapper {
                 .shipping(exitRequest.getShipping())
                 .tax(exitRequest.getTax())
                 .storeModel(StoreModel.builder().codStore(exitRequest.getCodStore()).build())
+                .shippingCompanyModel(ShippingCompanyModel.builder().codShippingCompany(exitRequest.getCodShippingComapany()).build())
                 .build();
     }
 

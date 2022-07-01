@@ -23,18 +23,18 @@ public class ExitItemService {
         return exitItemRepository.findById(uuid).orElseThrow(() -> new ExitItemNotFoundException("Item de saída não encontrado."));
     }
 
-    public ExitItemModel save(ExitItemModel exitItemModel){
+    public ExitItemModel save(ExitItemModel exitItemModel) {
         return exitItemRepository.save(exitItemModel);
     }
 
-    public ExitItemModel update(ExitItemModel exitItemModel, UUID uuid){
+    public ExitItemModel update(ExitItemModel exitItemModel, UUID uuid) {
         exitItemRepository.findById(uuid).orElseThrow(() -> new ExitItemNotFoundException("Item de saída não encontrado."));
         exitItemModel.setCodExitItem(uuid);
         exitItemRepository.save(exitItemModel);
         return exitItemModel;
     }
 
-    public UUID delete(UUID uuid){
+    public UUID delete(UUID uuid) {
         var exitItemModel = exitItemRepository.findById(uuid).orElseThrow(() -> new ExitItemNotFoundException("Item de saída não encontrado."));
         exitItemRepository.delete(exitItemModel);
         return uuid;

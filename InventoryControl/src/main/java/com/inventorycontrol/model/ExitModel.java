@@ -36,4 +36,8 @@ public class ExitModel {
     @ManyToOne
     @JoinColumn(name = "store_codStore")
     private StoreModel storeModel;
+
+    @ManyToOne
+    @JoinColumn(name = "shippingCompany_codShippingCompany")
+    private ShippingCompanyModel shippingCompanyModel;
 }

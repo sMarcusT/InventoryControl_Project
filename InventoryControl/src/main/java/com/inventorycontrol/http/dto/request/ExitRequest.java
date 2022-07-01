@@ -23,4 +23,6 @@ public class ExitRequest {
     private BigDecimal tax;
 
     private UUID codStore;
+
+    private UUID codShippingComapany;
 }
