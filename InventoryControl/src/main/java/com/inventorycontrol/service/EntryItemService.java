@@ -1,8 +1,10 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.ProductNotFoundException;
 import com.inventorycontrol.model.EntryItemModel;
 import com.inventorycontrol.repository.EntryItemRepository;
 import com.inventorycontrol.exception.EntryItemNotFoundException;
+import com.inventorycontrol.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.UUID;
 public class EntryItemService {
 
     private final EntryItemRepository entryItemRepository;
+
+    private final ProductRepository productRepository;
 
     public List<EntryItemModel> findAll() {
         return entryItemRepository.findAll();
@@ -38,5 +42,10 @@ public class EntryItemService {
         var entryItemModel = entryItemRepository.findById(uuid).orElseThrow(() -> new EntryItemNotFoundException("Entrada de item não encontrada"));
         entryItemRepository.delete(entryItemModel);
         return uuid;
+    }
+
+    public List<EntryItemModel> findItemEntryByProduct(UUID uuid){
+        return entryItemRepository.findEntryItemModelByProductModel(productRepository.findById(uuid)
+                .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado.")));
     }
 }
