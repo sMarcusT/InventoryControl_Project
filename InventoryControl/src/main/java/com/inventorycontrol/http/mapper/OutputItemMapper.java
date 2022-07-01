@@ -2,7 +2,9 @@ package com.inventorycontrol.http.mapper;
 
 import com.inventorycontrol.http.dto.request.OutputItemRequest;
 import com.inventorycontrol.http.dto.response.OutputItemResponse;
+import com.inventorycontrol.model.ExitModel;
 import com.inventorycontrol.model.OutputItemModel;
+import com.inventorycontrol.model.ProductModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ public class OutputItemMapper {
                 .batch(outputItemRequest.getBatch())
                 .qtde(outputItemRequest.getQtde())
                 .value(outputItemRequest.getValue())
+                .productModel(ProductModel.builder().codProduct(outputItemRequest.getCodProduct()).build())
+                .exitModel(ExitModel.builder().codExit(outputItemRequest.getCodExit()).build())
                 .build();
     }
 

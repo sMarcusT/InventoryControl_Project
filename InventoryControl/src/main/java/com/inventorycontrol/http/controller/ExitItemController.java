@@ -1,9 +1,6 @@
 package com.inventorycontrol.http.controller;
 
-import com.inventorycontrol.http.dto.request.ExitItemRequest;
 import com.inventorycontrol.http.dto.response.ExitItemResponse;
-import com.inventorycontrol.http.mapper.ExitItemMapper;
-import com.inventorycontrol.service.ExitItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
