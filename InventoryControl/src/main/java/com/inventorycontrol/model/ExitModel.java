@@ -32,4 +32,8 @@ public class ExitModel {
 
     // Imposto
     private BigDecimal tax;
+
+    @ManyToOne
+    @JoinColumn(name = "store_codStore")
+    private StoreModel storeModel;
 }

@@ -21,4 +21,6 @@ public class ExitRequest {
     // Imposto
     @NotNull(message = "Informe o valor do imposto sobre o produto.")
     private BigDecimal tax;
+
+    private UUID codStore;
 }
