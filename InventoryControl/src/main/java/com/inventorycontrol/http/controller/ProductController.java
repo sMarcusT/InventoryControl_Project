@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @GetMapping("/findProductsByCategory/{categoryId}")
-    public ResponseEntity<List<ProductResponse>> findProductsByCategory(@PathVariable String categoryId){
+    public ResponseEntity<List<ProductResponse>> findProductsByCategory(@PathVariable String categoryId) {
         return ResponseEntity.ok().body(ProductMapper.produtoResponseList(productService.findProductsByCategory(UUID.fromString(categoryId))));
     }
 }

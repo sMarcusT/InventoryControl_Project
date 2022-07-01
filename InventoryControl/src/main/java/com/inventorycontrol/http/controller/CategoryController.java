@@ -47,7 +47,7 @@ public class CategoryController {
     }
 
     @GetMapping("/findCategoriesByProvider/{providerId}")
-    public ResponseEntity<List<CategoryResponse>> findCategoriesByProvider(@PathVariable String providerId){
+    public ResponseEntity<List<CategoryResponse>> findCategoriesByProvider(@PathVariable String providerId) {
         return ResponseEntity.ok().body(CategoryMapper.toResponseList(categoryService.findCategoriesByProvider(UUID.fromString(providerId))));
     }
 }

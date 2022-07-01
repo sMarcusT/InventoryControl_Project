@@ -44,7 +44,7 @@ public class EntryItemService {
         return uuid;
     }
 
-    public List<EntryItemModel> findItemEntryByProduct(UUID uuid){
+    public List<EntryItemModel> findItemEntryByProduct(UUID uuid) {
         return entryItemRepository.findEntryItemModelByProductModel(productRepository.findById(uuid)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado.")));
     }

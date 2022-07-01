@@ -46,4 +46,9 @@ public class EntryController {
     public ResponseEntity<UUID> delete(@PathVariable String entryId) {
         return ResponseEntity.ok().body(entryService.delete(UUID.fromString(entryId)));
     }
+
+    @GetMapping("/findItemEntryByProduct/{shippingCompanyId}")
+    public ResponseEntity<List<EntryResponse>> findItemEntryByProduct(@PathVariable String shippingCompanyId){
+        return ResponseEntity.ok().body(EntryMapper.entryResponseList(entryService.findEntryByShippingCompany(UUID.fromString(shippingCompanyId))));
+    }
 }

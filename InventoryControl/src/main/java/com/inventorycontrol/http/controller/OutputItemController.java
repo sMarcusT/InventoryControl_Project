@@ -47,7 +47,7 @@ public class OutputItemController {
     }
 
     @GetMapping("/findItemOutputByProduct/{productId}")
-    public ResponseEntity<List<OutputItemResponse>> findItemOutputByProduct(@PathVariable String productId){
+    public ResponseEntity<List<OutputItemResponse>> findItemOutputByProduct(@PathVariable String productId) {
         return ResponseEntity.ok().body(OutputItemMapper.outputItemResponseList(outputItemService.findItemOutputByProduct(UUID.fromString(productId))));
     }
 }

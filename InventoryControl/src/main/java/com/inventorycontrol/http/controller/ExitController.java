@@ -47,7 +47,7 @@ public class ExitController {
     }
 
     @GetMapping("/findExitsByShippingCompany/{shippingCompanyId}")
-    public ResponseEntity<List<ExitResponse>> findExitsByShippingCompany(@PathVariable String shippingCompanyId){
+    public ResponseEntity<List<ExitResponse>> findExitsByShippingCompany(@PathVariable String shippingCompanyId) {
         return ResponseEntity.ok().body(ExitMapper.toResponseList(exitService.findExitsByShippingCompany(UUID.fromString(shippingCompanyId))));
     }
 }

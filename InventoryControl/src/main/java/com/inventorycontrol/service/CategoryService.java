@@ -44,7 +44,7 @@ public class CategoryService {
         return uuid;
     }
 
-    public List<CategoryModel> findCategoriesByProvider(UUID uuid){
+    public List<CategoryModel> findCategoriesByProvider(UUID uuid) {
         return categoryRepository.findCategoryModelByProviderModel(providerRepository.findById(uuid)
                 .orElseThrow(() -> new ProviderNotFoundException("Fornecedor não encontrado.")));
     }

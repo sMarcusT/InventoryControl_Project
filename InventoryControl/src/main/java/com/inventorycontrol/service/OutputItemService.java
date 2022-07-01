@@ -51,7 +51,7 @@ public class OutputItemService {
         return uuid;
     }
 
-    public List<OutputItemModel> findItemOutputByProduct(UUID uuid){
+    public List<OutputItemModel> findItemOutputByProduct(UUID uuid) {
         return outputItemRepository.findOutputItemModelByProductModel(productRepository.findById(uuid)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não encontrado.")));
     }

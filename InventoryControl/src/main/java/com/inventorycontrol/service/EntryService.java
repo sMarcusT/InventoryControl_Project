@@ -1,8 +1,10 @@
 package com.inventorycontrol.service;
 
+import com.inventorycontrol.exception.ShippingCompanyNotFoundException;
 import com.inventorycontrol.model.EntryModel;
 import com.inventorycontrol.repository.EntryRepository;
 import com.inventorycontrol.exception.EntryNotFoundException;
+import com.inventorycontrol.repository.ShippingCompanyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.UUID;
 public class EntryService {
 
     private final EntryRepository entryRepository;
+
+    private final ShippingCompanyRepository shippingCompanyRepository;
 
     public List<EntryModel> findAll() {
         return entryRepository.findAll();
@@ -38,5 +42,10 @@ public class EntryService {
         var entryModel = entryRepository.findById(uuid).orElseThrow(() -> new EntryNotFoundException("Entrada não encontrada"));
         entryRepository.delete(entryModel);
         return uuid;
+    }
+
+    public List<EntryModel> findEntryByShippingCompany(UUID uuid) {
+        return entryRepository.findEntryModelByShippingCompanyModel(shippingCompanyRepository.findById(uuid)
+                .orElseThrow(() -> new ShippingCompanyNotFoundException("Entrada da transportadora não encontrada.")));
     }
 }

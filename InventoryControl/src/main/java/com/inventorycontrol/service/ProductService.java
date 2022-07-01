@@ -44,7 +44,7 @@ public class ProductService {
         return uuid;
     }
 
-    public List<ProductModel> findProductsByCategory(UUID uuid){
+    public List<ProductModel> findProductsByCategory(UUID uuid) {
         return productRepository.findProductModelByCategoryModel(categoryRepository.findById(uuid)
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada.")));
     }
