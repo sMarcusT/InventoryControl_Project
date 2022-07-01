@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "entry", schema = "inventory")
-public class EntryModel {
+public class EntryModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -42,4 +43,6 @@ public class ShippingCompanyRequest {
     @NotEmpty(message = "Informe o telefone.")
     @Size(min = 14, max = 14)
     private String tel;
+
+    private List<UUID> cityModelList;
 }

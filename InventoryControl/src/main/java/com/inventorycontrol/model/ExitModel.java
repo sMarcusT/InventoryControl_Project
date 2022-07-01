@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "exit", schema = "inventory")
-public class ExitModel {
+public class ExitModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

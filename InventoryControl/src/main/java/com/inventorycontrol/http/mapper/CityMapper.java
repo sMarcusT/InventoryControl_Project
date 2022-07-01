@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -35,5 +36,16 @@ public class CityMapper {
         } else {
             return cityModelList.stream().map(CityMapper::toResponse).collect(Collectors.toList());
         }
+    }
+
+    // Para a relacao ManyToMany com Shipping Company
+    public static List<CityModel> toModelList(List<UUID> uuids){
+        return uuids.stream().map(CityMapper::createCity).collect(Collectors.toList());
+    }
+
+    public static CityModel createCity(UUID uuid){
+        return CityModel.builder()
+                .codCity(uuid)
+                .build();
     }
 }

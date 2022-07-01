@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serial;
-import java.util.List;
+import java.io.Serializable;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "city", schema = "inventory")
-public class CityModel {
+public class CityModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

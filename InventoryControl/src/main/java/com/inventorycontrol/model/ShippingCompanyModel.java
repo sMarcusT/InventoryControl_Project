@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "shipping_company", schema = "inventory")
-public class ShippingCompanyModel {
+public class ShippingCompanyModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -41,4 +43,12 @@ public class ShippingCompanyModel {
     private String contact;
 
     private String tel;
+
+    @ManyToMany
+    @JoinTable(
+            name = "shipping_company_cities",
+            schema = "inventory",
+            joinColumns = @JoinColumn(name = "cod_codShippingCompany_fk"),
+            inverseJoinColumns = @JoinColumn(name = "cod_codCity-fk"))
+    private List<CityModel> cityModelList;
 }

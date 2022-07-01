@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -19,7 +20,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "store", schema = "inventory")
-public class StoreModel {
+public class StoreModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
