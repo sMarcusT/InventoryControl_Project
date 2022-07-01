@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -35,4 +36,6 @@ public class EntryRequest {
     // Imposto
     @NotEmpty(message = "Informe o valor do imposto sobre o produto.")
     private BigDecimal tax;
+
+    private UUID codShippingCompany;
 }

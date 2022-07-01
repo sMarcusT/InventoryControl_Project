@@ -3,6 +3,7 @@ package com.inventorycontrol.http.mapper;
 import com.inventorycontrol.http.dto.request.EntryRequest;
 import com.inventorycontrol.http.dto.response.EntryResponse;
 import com.inventorycontrol.model.EntryModel;
+import com.inventorycontrol.model.ShippingCompanyModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class EntryMapper {
                 .shipping(entryRequest.getShipping())
                 .num(entryRequest.getNum())
                 .tax(entryRequest.getTax())
+                .shippingCompanyModel(ShippingCompanyModel.builder().codShippingCompany(entryRequest.getCodShippingCompany()).build())
                 .build();
     }
 

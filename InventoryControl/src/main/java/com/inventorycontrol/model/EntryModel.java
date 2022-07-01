@@ -40,4 +40,8 @@ public class EntryModel implements Serializable {
 
     // Imposto
     private BigDecimal tax;
+
+    @ManyToOne
+    @JoinColumn(name = "shippingCompany_codShippingCompany")
+    private ShippingCompanyModel shippingCompanyModel;
 }
