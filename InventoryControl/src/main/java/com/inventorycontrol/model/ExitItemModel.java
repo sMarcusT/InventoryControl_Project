@@ -28,6 +28,10 @@ public class ExitItemModel {
     private BigDecimal value;
 
     @ManyToOne
+    @JoinColumn(name = "product_codProduct")
+    private ProductModel productModel;
+
+    @ManyToOne
     @JoinColumn(name = "exit_codExit")
     private ExitModel exitModel;
 }
