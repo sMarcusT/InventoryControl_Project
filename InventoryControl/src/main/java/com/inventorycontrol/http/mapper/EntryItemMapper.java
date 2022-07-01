@@ -3,6 +3,8 @@ package com.inventorycontrol.http.mapper;
 import com.inventorycontrol.http.dto.request.EntryItemRequest;
 import com.inventorycontrol.http.dto.response.EntryItemResponse;
 import com.inventorycontrol.model.EntryItemModel;
+import com.inventorycontrol.model.EntryModel;
+import com.inventorycontrol.model.ProductModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,11 +17,22 @@ import static java.util.Objects.isNull;
 public class EntryItemMapper {
 
     public static EntryItemModel toModel(EntryItemRequest entryItemRequest) {
-        return EntryItemModel.builder().batch(entryItemRequest.getBatch()).qtde(entryItemRequest.getQtde()).value(entryItemRequest.getValue()).build();
+        return EntryItemModel.builder()
+                .batch(entryItemRequest.getBatch())
+                .qtde(entryItemRequest.getQtde())
+                .value(entryItemRequest.getValue())
+                .productModel(ProductModel.builder().codProduct(entryItemRequest.getCodProduct()).build())
+                .entryModel(EntryModel.builder().codEntry(entryItemRequest.getCodEntry()).build())
+                .build();
     }
 
     public static EntryItemResponse toResponse(EntryItemModel entryItemModel) {
-        return EntryItemResponse.builder().codeEntryItem(entryItemModel.getCodeEntryItem()).batch(entryItemModel.getBatch()).qtde(entryItemModel.getQtde()).value(entryItemModel.getValue()).build();
+        return EntryItemResponse.builder()
+                .codeEntryItem(entryItemModel.getCodeEntryItem())
+                .batch(entryItemModel.getBatch())
+                .qtde(entryItemModel.getQtde())
+                .value(entryItemModel.getValue())
+                .build();
     }
 
     public static List<EntryItemResponse> toResponseList(List<EntryItemModel> entryItemModelList) {
