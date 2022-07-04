@@ -1,8 +1,8 @@
-package com.inventorycontrol.exception;
-
-public class UserNotFoundException extends RuntimeException{
-
-    public UserNotFoundException(String message){
-        super(message);
-    }
-}
+//package com.inventorycontrol.exception;
+//
+//public class UserNotFoundException extends RuntimeException{
+//
+//    public UserNotFoundException(String message){
+//        super(message);
+//    }
+//}

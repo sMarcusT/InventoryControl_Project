@@ -240,22 +240,22 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleExceptionInternal(ex, apiError, headers, status, request);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    protected ResponseEntity<Object> handleNoPermission(UserNotFoundException ex, WebRequest request) {
-        var status = HttpStatus.BAD_REQUEST;
-
-        ApiError apiError = ApiError.builder()
-                .status(status.value())
-                .title("Dados inválidos.")
-                .type(getErrorDocumentationUrl(request))
-                .detail(ex.getMessage())
-                .build();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PROBLEM_JSON);
-
-        return super.handleExceptionInternal(ex, apiError, headers, status, request);
-    }
+//    @ExceptionHandler(UserNotFoundException.class)
+//    protected ResponseEntity<Object> handleNoPermission(UserNotFoundException ex, WebRequest request) {
+//        var status = HttpStatus.BAD_REQUEST;
+//
+//        ApiError apiError = ApiError.builder()
+//                .status(status.value())
+//                .title("Dados inválidos.")
+//                .type(getErrorDocumentationUrl(request))
+//                .detail(ex.getMessage())
+//                .build();
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_PROBLEM_JSON);
+//
+//        return super.handleExceptionInternal(ex, apiError, headers, status, request);
+//    }
     @ExceptionHandler(DataIntegrityViolationException.class)
     protected ResponseEntity<Object> handleDataIntegrityViolation(DataIntegrityViolationException ex, WebRequest request) {
         var status = HttpStatus.INTERNAL_SERVER_ERROR;
