@@ -44,5 +44,5 @@ public class ShippingCompanyRequest {
     @Size(min = 14, max = 14)
     private String tel;
 
-    private List<UUID> cityModelList;
+    private List<UUID> codCityList;
 }

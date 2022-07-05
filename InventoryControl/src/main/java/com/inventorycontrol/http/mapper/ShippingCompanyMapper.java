@@ -25,7 +25,7 @@ public class ShippingCompanyMapper {
                 .ins(shippingCompanyRequest.getIns())
                 .contact(shippingCompanyRequest.getContact())
                 .tel(shippingCompanyRequest.getTel())
-                .cityModelList(CityMapper.toModelList(shippingCompanyRequest.getCityModelList()))
+                .cityModelList(CityMapper.toModelList(shippingCompanyRequest.getCodCityList()))
                 .build();
     }
 
