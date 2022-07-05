@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -43,8 +44,12 @@ public class ProviderModel implements Serializable {
 
     private String tel;
 
-    @ManyToOne
-    @JoinColumn(name = "city_codCity")
-    private CityModel cityModel;
+    @ManyToMany
+    @JoinTable(
+            name = "provider_cities",
+            schema = "inventory",
+            joinColumns = @JoinColumn(name = "codProvider_fk"),
+            inverseJoinColumns = @JoinColumn(name = "codCity_fk"))
+    private List<CityModel> cityModelList;
 
 }

@@ -26,7 +26,7 @@ public class ProviderMapper {
                 .cnpj(providerRequest.getCnpj())
                 .insc(providerRequest.getInsc())
                 .tel(providerRequest.getTel())
-                .cityModel(CityModel.builder().codCity(providerRequest.getCodCity()).build())
+                .cityModelList(CityMapper.toModelList(providerRequest.getCodCityList()))
                 .build();
     }
 
